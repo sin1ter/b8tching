@@ -14,3 +14,4 @@ Route::get('/admin',[AdminController::class, 'index']);
 Route::post('/admin',[AdminController::class, 'store']);
 Route::get('/customer',[CustomerController::class, 'index']);
 Route::post('/customer',[CustomerController::class, 'store']);
+Route::get('/customer_info',[AdminController::class, 'show']);

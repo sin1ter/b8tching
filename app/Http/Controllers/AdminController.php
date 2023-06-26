@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Admin;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Symfony\Contracts\Service\Attribute\Required;
 
@@ -33,5 +34,12 @@ class AdminController extends Controller
         $admin->date_of_birth = $res['date_of_birth'];
         $admin->image = $res['image'];
         $admin->save();
+    }
+
+    public function show(Request $req) 
+    {
+        $customer = Customer::all();
+        $data = compact('customer');
+        return view('admin.customer_info_show')->with($data);
     }
 }
