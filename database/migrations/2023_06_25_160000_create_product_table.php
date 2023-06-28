@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('product_description');
             $table->string('image');
             $table->bigInteger('quantity');
-            $table->unsignedBigInteger('catergory_id');
-            $table->foreign('catergory_id')->references('catergory_id')->on('product_category');
+            $table->enum('category', ['Male', 'Female', 'Kids']);
+            $table->enum('size', ['S','M','L','XL','XXL','XXXL']);
             $table->timestamps();
         });
     }

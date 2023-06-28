@@ -14,40 +14,19 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Gmail</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Address</th>
-    </tr>
-  </thead>
-    <tbody>
-        @foreach ($customer as $c)
-        <tr>
-        <td>{{$c->id}}</td>
-        <td>{{$c->name}}</td>
-        <td>{{$c->gmail}}</td>
-        <td>{{$c->phone_number}}</td>
-        <td>{{$c->address}}</td>
-                     
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+    <form>
+    <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label class="form-check-label"><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
   </body>
 </html>

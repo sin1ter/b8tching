@@ -19,20 +19,23 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Name</th>
-      <th scope="col">Gmail</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Address</th>
+      <th scope="col">Price</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Category</th>
+      <th scope="col">Size</th>
     </tr>
   </thead>
     <tbody>
-        @foreach ($customer as $c)
+        @foreach ($product as $p)
         <tr>
-        <td>{{$c->id}}</td>
-        <td>{{$c->name}}</td>
-        <td>{{$c->gmail}}</td>
-        <td>{{$c->phone_number}}</td>
-        <td>{{$c->address}}</td>
-                     
+        <td>{{$p->product_id }}</td>
+        <td>{{$p->product_name}}</td>
+        <td>{{$p->product_price}}</td>
+        <td>{{$p->product_description}}</td>
+        <td>{{$p->quantity}}</td>
+        <td>{{$p->category}}</td>
+        <td>{{$p->size}}</td>                     
         </tr>
         <tr>
         <th scope="row">2</th>
