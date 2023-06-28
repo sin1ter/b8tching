@@ -17,38 +17,34 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Description</th>
       <th scope="col">Quantity</th>
       <th scope="col">Category</th>
       <th scope="col">Size</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
     <tbody>
         @foreach ($product as $p)
         <tr>
-        <td>{{$p->product_id }}</td>
         <td>{{$p->product_name}}</td>
         <td>{{$p->product_price}}</td>
         <td>{{$p->product_description}}</td>
         <td>{{$p->quantity}}</td>
         <td>{{$p->category}}</td>
-        <td>{{$p->size}}</td>                     
+        <td>{{$p->size}}</td>  
+        <td>
+        <button type="button" class="btn btn-outline-primary">Edit</button>
+        <a href="{{url('/show_product/update/')}}/{{$p->product_id}}">
+        <a href="{{url('/show_product/delete/')}}/{{$p->product_id}}">
+        <button type="button" class="btn btn-outline-danger">Delete</button>
+        </td>
+    </a>
+</td>
         </tr>
         <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        </tr>
         @endforeach
     </tbody>
 </table>

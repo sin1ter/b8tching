@@ -17,6 +17,8 @@ Route::get('/customer_info',[AdminController::class, 'show']);
 Route::get('/add_product',[AdminController::class, 'product']);
 Route::post('/add_product',[AdminController::class, 'add_product']);
 Route::get('/show_product',[AdminController::class, 'show_product']);
+Route::get('/show_product/delete/{id}',[AdminController::class, 'delete']);
+Route::get('/show_product/update/{id}',[AdminController::class, 'update']);
 
 Route::get('/customer',[CustomerController::class, 'index']);
 Route::post('/customer',[CustomerController::class, 'store']);
