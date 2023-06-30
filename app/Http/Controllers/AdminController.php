@@ -12,11 +12,16 @@ use Symfony\Contracts\Service\Attribute\Required;
 class AdminController extends Controller
 {
     //view
-    public function index() 
-    {
-        return view('admin/registration');
+    // public function index() 
+    // {
+    //     return view('admin/registration');
+    // }
+    public function index(){
+        $url = url('/admin');
+        $title = "Admin Registration form";
+        $data = compact('url','title');
+        return view('admin/registration')->with($data);
     }
-
     //Customer information store
     public function store(Request $res)
     {
@@ -52,7 +57,10 @@ class AdminController extends Controller
 
     public function product() 
     {
-        return view('admin/product');
+        $url = url('/add_product');
+        $title = "Add Product";
+        $data = compact('url','title');
+        return view('admin/product')->with($data);
     } 
     public function show_product(Request $req) 
     {
@@ -84,7 +92,22 @@ class AdminController extends Controller
         return redirect('show_product');
     }
 
-    public function update($id, Request $req){
+    public function edit($id)
+    {
+        $product= Product::find($id);
+        if(is_null($product)){
+            
+            return redirect('show_product');
+        }
+        else{
+            $title = "Update Product";
+            $url = url('/show_product/update') ."/". $id;
+            $data = compact('product', 'url','title');
+            return redirect('show_product');
+        }
+    }
+    public function update($id, Request $req)
+    {
         $product = Product::find($id);
         $product->product_name = $req -> product_name;
         $product->product_price = $req -> product_price;

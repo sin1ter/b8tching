@@ -28,6 +28,7 @@
   </thead>
     <tbody>
         @foreach ($product as $p)
+        
         <tr>
         <td>{{$p->product_name}}</td>
         <td>{{$p->product_price}}</td>
@@ -37,7 +38,7 @@
         <td>{{$p->size}}</td>  
         <td>
         <button type="button" class="btn btn-outline-primary">Edit</button>
-        <a href="{{url('/show_product/update/')}}/{{$p->product_id}}">
+        <a href="{{url('/show_product/edit/')}}/{{$p->product_id}}">
         <a href="{{url('/show_product/delete/')}}/{{$p->product_id}}">
         <button type="button" class="btn btn-outline-danger">Delete</button>
         </td>
