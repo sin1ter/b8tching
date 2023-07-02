@@ -103,7 +103,7 @@ class AdminController extends Controller
             $title = "Update Product";
             $url = url('/show_product/update') ."/". $id;
             $data = compact('product', 'url','title');
-            return redirect('show_product');
+            return view('admin.product')->with($data);
         }
     }
     public function update($id, Request $req)

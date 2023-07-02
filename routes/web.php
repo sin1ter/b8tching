@@ -20,8 +20,8 @@ Route::get('/add_product',[AdminController::class, 'product']);
 Route::post('/add_product',[AdminController::class, 'add_product']);
 Route::get('/show_product',[AdminController::class, 'show_product']);
 Route::get('/show_product/delete/{id}',[AdminController::class, 'delete']);
-Route::get('/show_product/edit/{id}',[AdminController::class, 'edit']);
-Route::get('/show_product/update/{id}',[AdminController::class, 'update']);
+Route::get('/show_product/edit/{id}',[AdminController::class, 'edit']) -> name('show_product.edit');
+Route::post('/show_product/update/{id}',[AdminController::class, 'update']);
 
 
 
