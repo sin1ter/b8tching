@@ -47,6 +47,11 @@ class AdminController extends Controller
         $admin->save();
     }
 
+    public function login(Request $req) 
+    {
+        return Admin::where('email', $req->input('email'))->get();
+    }
+
     //Customer Information Show
     public function show(Request $req) 
     {
