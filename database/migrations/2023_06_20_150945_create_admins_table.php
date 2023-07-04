@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
-            $table->string('gmail');            
+            $table->string('gmail')->unique();            
             $table->string('address');
             $table->string('password');
             $table->dateTime('date_of_birth');

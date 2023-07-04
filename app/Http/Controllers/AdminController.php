@@ -49,7 +49,7 @@ class AdminController extends Controller
 
     public function login(Request $req) 
     {
-        return Admin::where('email', $req->input('email'))->get();
+        return Admin::where('email', $req->input('email'), $req->input('password'))->get();
     }
 
     //Customer Information Show

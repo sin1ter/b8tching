@@ -15,7 +15,7 @@ Route::get('/', function () {
 
 Route::get('/admin',[AdminController::class, 'index']);
 Route::post('/admin',[AdminController::class, 'store']);
-Route::view('/login', 'login');
+Route::view('/login', 'admin.login');
 Route::get('/customer_info',[AdminController::class, 'show']);
 Route::get('/add_product',[AdminController::class, 'product']);
 Route::post('/add_product',[AdminController::class, 'add_product']);
@@ -29,3 +29,7 @@ Route::post('/show_product/update/{id}',[AdminController::class, 'update']);
 Route::get('/customer',[CustomerController::class, 'index']);
 Route::post('/customer',[CustomerController::class, 'store']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

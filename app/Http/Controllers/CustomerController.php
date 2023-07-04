@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class CustomerController extends Controller
@@ -21,7 +22,7 @@ class CustomerController extends Controller
         // $customer->gender = $res['gender'];
         $customer->phone_number = $res['phone_number'];
         $customer->address = $res['address'];
-        $customer->password = $res['password'];
+        $customer->password = Hash::make($res->password);        
         $customer->save();
     }
 }
