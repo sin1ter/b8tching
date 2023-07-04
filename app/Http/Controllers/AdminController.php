@@ -62,6 +62,7 @@ class AdminController extends Controller
 
     public function product() 
     {
+        $product = new Product;
         $url = url('/add_product');
         $title = "Add Product";
         $data = compact('url','title');
