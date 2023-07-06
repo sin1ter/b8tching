@@ -29,22 +29,10 @@
         <tr>
         <td>{{$c->id}}</td>
         <td>{{$c->name}}</td>
-        <td>{{$c->gmail}}</td>
+        <td>{{$c->email}}</td>
         <td>{{$c->phone_number}}</td>
         <td>{{$c->address}}</td>
                      
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
         </tr>
         @endforeach
     </tbody>

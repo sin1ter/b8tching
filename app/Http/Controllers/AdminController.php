@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Admin;
-use App\Models\Customer;
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -55,7 +55,7 @@ class AdminController extends Controller
     //Customer Information Show
     public function show(Request $req) 
     {
-        $customer = Customer::all();
+        $customer = User::all();
         $data = compact('customer');
         return view('admin.customer_info_show')->with($data);
     }
@@ -65,7 +65,7 @@ class AdminController extends Controller
         $product = new Product;
         $url = url('/add_product');
         $title = "Add Product";
-        $data = compact('url','title');
+        $data = compact('product','url','title');
         return view('admin/product')->with($data);
     } 
     public function show_product(Request $req) 
