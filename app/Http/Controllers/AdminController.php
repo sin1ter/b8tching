@@ -45,11 +45,26 @@ class AdminController extends Controller
         $admin->date_of_birth = $res -> date_of_birth;
         $admin->image = $res -> image;
         $admin->save();
+        return redirect('admin_show');
     }
 
-    public function login(Request $req) 
+    //admin show
+    public function admin_info(Request $req) 
     {
-        return Admin::where('email', $req->input('email'), $req->input('password'))->get();
+        $admin = Admin::all();
+        $title = "Admins";
+        $data = compact('admin','title');
+        return view('admin.admin_show')->with($data);
+    }
+    //admin delete
+    public function admindelete($id) 
+    {
+        $admin=Admin::find($id);
+        if(!is_null($admin)) 
+        {
+            $admin->delete();
+        }
+        return redirect('admin_show');
     }
 
     //Customer Information Show
@@ -60,6 +75,7 @@ class AdminController extends Controller
         return view('admin.customer_info_show')->with($data);
     }
 
+    //product form view
     public function product() 
     {
         $product = new Product;
@@ -68,6 +84,7 @@ class AdminController extends Controller
         $data = compact('product','url','title');
         return view('admin/product')->with($data);
     } 
+    //product show
     public function show_product(Request $req) 
     {
         $product = Product::all();
@@ -75,6 +92,7 @@ class AdminController extends Controller
         $data = compact('product','title');
         return view('admin.product_show')->with($data);
     }
+    //product add into database
     public function add_product(Request $req) 
     {
         $product = new Product;
@@ -89,6 +107,7 @@ class AdminController extends Controller
         return redirect('show_product');
     }
     
+    // product delete from the database
     public function delete($id) 
     {
         $product=Product::find($id);
@@ -99,6 +118,7 @@ class AdminController extends Controller
         return redirect('show_product');
     }
 
+    //product update from the database
     public function edit($id)
     {
         $product= Product::find($id);
@@ -113,6 +133,7 @@ class AdminController extends Controller
             return view('admin.product')->with($data);
         }
     }
+    // product updated
     public function update($id, Request $req)
     {
         $product = Product::find($id);

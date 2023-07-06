@@ -12,6 +12,8 @@
   <body>
     <br> <br> <br>
   <h1 class = "text-center">{{$title}}</h1>
+  <br>
+
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-1000">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -31,6 +33,7 @@
       </div>
     </div>
   </div>
+  
   </body>
   
 </html>
