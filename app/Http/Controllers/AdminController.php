@@ -71,7 +71,8 @@ class AdminController extends Controller
     public function show_product(Request $req) 
     {
         $product = Product::all();
-        $data = compact('product');
+        $title = "Show Product";
+        $data = compact('product','title');
         return view('admin.product_show')->with($data);
     }
     public function add_product(Request $req) 

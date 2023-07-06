@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <form action="{{url('admin')}}" method="POST">
+        <form action="{{url('admin')}}" method="POST">
       @csrf
       <div class="form-group">
         <label for="name">Name:</label>
@@ -39,4 +39,5 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
 @endsection

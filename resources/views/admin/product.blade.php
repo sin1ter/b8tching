@@ -33,6 +33,7 @@
         <option value="female"{{$product -> category == 'Female' ? 'selected' : ''}}>Female</option>
         </select>
     <br>
+    <br>
     <label for="menu">Size:</label>
         <select id="menu" name="size" value = "{{$product->size}}">
             <option  value="S" {{$product -> size == 'S' ? 'selected' : ''}}>S</option>
@@ -42,6 +43,7 @@
             <option  value="XXL" {{$product -> size == 'XXL' ? 'selected' : ''}}>XXL</option>
             <option  value="XXXL" {{$product -> size == 'XXXL' ? 'selected' : ''}}>XXXL</option>
         </select>
+    <br>
     <br>
     <button type="submit" class="btn btn-primary">Add</button>
 </form>
