@@ -11,15 +11,11 @@ use Symfony\Contracts\Service\Attribute\Required;
 
 class AdminController extends Controller
 {
-    //view
-    // public function index() 
-    // {
-    //     return view('admin/registration');
-    // }
     public function index(){
+        $admin = Admin::all();
         $url = url('/admin');
         $title = "Admin Registration form";
-        $data = compact('url','title');
+        $data = compact('admin','url','title');
         return view('admin/registration')->with($data);
     }
     //Customer information store
@@ -68,7 +64,7 @@ class AdminController extends Controller
     }
 
     //Admin Profile
-    public function admin_profile($id) 
+    public function admin_profile_show($id) 
     {
         $admin= Admin::find($id);
         if(is_null($admin)){
@@ -83,6 +79,38 @@ class AdminController extends Controller
         }
     }
 
+
+    public function admin_profile_edit($id)
+    {
+        $admin= Admin::find($id);
+        if(is_null($admin)){
+            
+            return redirect('admin_profile');
+        }
+        else{
+            $title = "Update Profile";
+            $url = url('/admin_profile/update') ."/". $id;
+            $data = compact('admin', 'url','title');
+            return view('admin.registration')->with($data);
+        }
+    }
+    // product updated
+    public function admin_profile_update($id, Request $req)
+    {
+        $admin = Admin::find($id);
+        $admin->name = $req -> name;
+        $admin->gmail = $req -> gmail;
+        $admin->address = $req -> address;
+        $admin->password = $req -> password;
+        $admin->date_of_birth = $req -> date_of_birth;
+        $admin->image = $req -> image;
+        $admin->save();
+
+        $title = "Update Profile";
+        $url = url('/admin_profile') ."/". $id;
+        $data = compact('admin', 'url','title');
+        return view('admin.admin_profile')->with($data);
+    }
     
 
     //Customer Information Show

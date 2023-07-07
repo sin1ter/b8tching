@@ -1,35 +1,35 @@
 @extends('layouts.master')
 @section('content')
-        <form action="{{url('admin')}}" method="POST">
+        <form action="{{$url}}" method="POST">
       @csrf
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" class="form-control" placeholder="Enter Name" name="name" id="name">
+        <input type="text" class="form-control" placeholder="Enter Name" name="name"  value = "{{$admin->name}}">
       </div>
 
       <div class="form-group">
         <label for="gmail">Gmail:</label>
-        <input type="gmail" class="form-control" placeholder="Enter gmail" name="gmail" id="gmail" >
+        <input type="gmail" class="form-control" placeholder="Enter gmail" name="gmail" value = "{{$admin->gmail}}">
       </div>
 
       <div class="form-group">
         <label for="address">Address:</label>
-        <input type="address" class="form-control" placeholder="Enter Address" name="address" id="address">
+        <input type="address" class="form-control" placeholder="Enter Address" name="address" value = "{{$admin->address}}">
       </div>
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" class="form-control" placeholder="Enter password" name="password" id="password">
+        <input type="password" class="form-control" placeholder="Enter password" name="password"  value = "{{$admin->password}}">
       </div>
 
       <div class="form-group">
         <label for="date_of_birth">Date of Birth:</label>
-        <input type="date" class="form-control" placeholder="Enter Date of Birthday" name="date_of_birth" id="date_of_birth">
+        <input type="date" class="form-control" placeholder="Enter Date of Birthday" name="date_of_birth" value = "{{$admin->date_of_birth}}">
       </div>
 
       <div class="form-group">
         <label for="image">Image:</label>
-        <input type="file" class="form-control-file" name="image" id="image">
+        <input type="file" class="form-control-file" name="image">
       </div>
 
       <div class="form-group form-check">
