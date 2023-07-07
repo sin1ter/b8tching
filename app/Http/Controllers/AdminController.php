@@ -67,11 +67,31 @@ class AdminController extends Controller
         return redirect('admin_show');
     }
 
+    //Admin Profile
+    public function admin_profile($id) 
+    {
+        $admin= Admin::find($id);
+        if(is_null($admin)){
+            
+            return redirect('admin_profile');
+        }
+        else{
+            $title = "Admin Profile";
+            $url = url('/admin_profile/update') ."/". $id;
+            $data = compact('admin', 'url','title');
+            return view('admin.admin_profile')->with($data);
+        }
+    }
+
+    
+
     //Customer Information Show
     public function show(Request $req) 
     {
         $customer = User::all();
-        $data = compact('customer');
+        $url = url('/customer_info');
+        $title = "Customer Information";
+        $data = compact('customer', 'url', 'title');
         return view('admin.customer_info_show')->with($data);
     }
 

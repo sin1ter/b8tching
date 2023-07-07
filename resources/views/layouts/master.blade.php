@@ -10,10 +10,35 @@
     <title>{{$title}}</title>
   </head>
   <body>
+  <header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">E-Commerce</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/add_product">Add Product</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin">Add Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/show_product">Show Product</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/customer_info">Customer</a>
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log Out</button>
+</nav>
+    </header>
     <br> <br> <br>
   <h1 class = "text-center">{{$title}}</h1>
   <br>
-
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-1000">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -33,7 +58,6 @@
       </div>
     </div>
   </div>
-  
   </body>
   
 </html>
