@@ -26,8 +26,8 @@ Route::get('/show_product/delete/{id}',[AdminController::class, 'delete']);
 Route::get('/show_product/edit/{id}',[AdminController::class, 'edit']) -> name('show_product.edit');
 Route::post('/show_product/update/{id}',[AdminController::class, 'update']);
 Route::get('/admin_profile/{id}', [AdminController::class, 'admin_profile_show']);
-Route::get('/admin_profile/edit/{id}',[AdminController::class, 'admin_profile_edit']) -> name('admin_profile.edit');
-Route::post('/admin_profile/update/{id}',[AdminController::class, 'admin_profile_update']);
+Route::get('/edit/{id}',[AdminController::class, 'admin_profile_edit']) -> name('admin_profile.edit');
+Route::put('/update',[AdminController::class, 'admin_profile_update']);
 
 Route::get('/customer',[CustomerController::class, 'index']);
 Route::post('/customer',[CustomerController::class, 'store']);

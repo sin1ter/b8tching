@@ -19,7 +19,7 @@ class AdminController extends Controller
         return view('admin/registration')->with($data);
     }
     //Customer information store
-    public function store(Request $res)
+    public function store(Request $request)
     {
         // $res->validate(
         //     [
@@ -32,14 +32,14 @@ class AdminController extends Controller
         //     ]
         //     );
         echo "<pre>";
-        print_r($res->all());
+        print_r($request->all());
         $admin = new Admin;
-        $admin->name = $res -> name;
-        $admin->gmail = $res -> gmail;
-        $admin->address = $res -> address;
-        $admin->password = Hash::make($res->password);
-        $admin->date_of_birth = $res -> date_of_birth;
-        $admin->image = $res -> image;
+        $admin->name = $request->input('name');
+        $admin->gmail = $request->input('gmail');
+        $admin->address = $request->input('address');
+        $admin->password = Hash::make ($request->input('password'));
+        $admin->date_of_birth = $request->input('date_of_birth');
+        $admin->image = $request->input('image');
         $admin->save();
         return redirect('admin_show');
     }
@@ -82,17 +82,11 @@ class AdminController extends Controller
 
     public function admin_profile_edit($id)
     {
-        $admin= Admin::find($id);
-        if(is_null($admin)){
-            
-            return redirect('admin_profile');
-        }
-        else{
-            $title = "Update Profile";
-            $url = url('/admin_profile/update') ."/". $id;
-            $data = compact('admin', 'url','title');
-            return view('admin.registration')->with($data);
-        }
+        $admin= admin::find($id);
+        $title = "Update Profile";        
+        $data = compact('admin','title');
+        return view ('admin.update_profile')->with($data);
+        
     }
     // product updated
     public function admin_profile_update($id, Request $req)
@@ -101,15 +95,14 @@ class AdminController extends Controller
         $admin->name = $req -> name;
         $admin->gmail = $req -> gmail;
         $admin->address = $req -> address;
-        $admin->password = $req -> password;
+        $admin->password = Hash::make ($req -> password);
         $admin->date_of_birth = $req -> date_of_birth;
         $admin->image = $req -> image;
-        $admin->save();
+        $admin->update();
 
         $title = "Update Profile";
-        $url = url('/admin_profile') ."/". $id;
-        $data = compact('admin', 'url','title');
-        return view('admin.admin_profile')->with($data);
+        $data = compact('admin','title');
+        return redirect('admin.admin_profile')->with($data);
     }
     
 

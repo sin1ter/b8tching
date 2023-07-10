@@ -74,10 +74,10 @@
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"  value="{{$admin->gmail}}" name = "gmail"></div>
                     <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control"  value="{{$admin->address}}" name = "address"></div>
-                    <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control"  value="{{$admin->password}}" name = "password"></div>
                     <div class="col-md-12"><label class="labels">Date of Birth</label><input type="text" class="form-control"  placeholder="Password" value="{{$admin->date_of_birth}}" name = "date_of_birth"></div>
                 </div>
-                <a href="{{url('/admin_profile/edit/')}}/{{$admin->id}}" class="btn btn-outline-primary">Edit profile</a>
+                <br> 
+                <a href="{{url('edit/')}}/{{$admin->id}}" class="btn btn-outline-primary">Edit profile</a>
             </div>
         </div>
     </div>
