@@ -98,8 +98,8 @@ class AdminController extends Controller
         $admin->update();
 
         $title = "Update Profile";
-        $data = compact('admin','title');
-        return redirect('admin.admin_profile')->with($data);
+        $data = compact('admin','title','id');
+        return redirect('admin_profile/{id}')->with($data);
     }
     
 

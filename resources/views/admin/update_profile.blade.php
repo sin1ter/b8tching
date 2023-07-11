@@ -1,8 +1,7 @@
 @extends('layouts.master')
 @section('content')
-    <form action="{{url('update/'.$admin->id)}}" method="POST">
+    <form action="{{url('/admin_profile/update/'.$admin->id)}}" method="POST">
       @csrf
-      @method('PUT')
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" class="form-control" placeholder="Enter Name" name="name"  value = "{{$admin->name}}">
