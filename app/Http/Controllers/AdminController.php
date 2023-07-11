@@ -12,14 +12,13 @@ use Symfony\Contracts\Service\Attribute\Required;
 class AdminController extends Controller
 {
     public function index(){
-        $admin = Admin::all();
         $url = url('/admin');
         $title = "Admin Registration form";
-        $data = compact('admin','url','title');
+        $data = compact('url','title');
         return view('admin/registration')->with($data);
     }
     //Customer information store
-    public function store(Request $request)
+    public function store(Request $res)
     {
         // $res->validate(
         //     [
@@ -32,18 +31,17 @@ class AdminController extends Controller
         //     ]
         //     );
         echo "<pre>";
-        print_r($request->all());
+        print_r($res->all());
         $admin = new Admin;
-        $admin->name = $request->input('name');
-        $admin->gmail = $request->input('gmail');
-        $admin->address = $request->input('address');
-        $admin->password = Hash::make ($request->input('password'));
-        $admin->date_of_birth = $request->input('date_of_birth');
-        $admin->image = $request->input('image');
+        $admin->name = $res -> name;
+        $admin->gmail = $res -> gmail;
+        $admin->address = $res -> address;
+        $admin->password = Hash::make($res->password);
+        $admin->date_of_birth = $res -> date_of_birth;
+        $admin->image = $res -> image;
         $admin->save();
         return redirect('admin_show');
     }
-
     //admin show
     public function admin_info(Request $req) 
     {
@@ -78,7 +76,6 @@ class AdminController extends Controller
             return view('admin.admin_profile')->with($data);
         }
     }
-
 
     public function admin_profile_edit($id)
     {
