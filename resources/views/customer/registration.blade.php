@@ -3,30 +3,54 @@
 @section('content')
     <form action="{{url('customer')}}" method="POST">
       @csrf
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" placeholder="Enter Name" name="name" id="name">
+      <div class="row mb-3">
+            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+
+            <div class="col-md-6">
+                <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name">
+            </div>
       </div>
 
-      <div class="form-group">
-        <label for="gmail">Gmail:</label>
-        <input type="gmail" class="form-control" placeholder="Enter gmail" name="email" id="email" >
+      <div class="row mb-3">
+            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
+
+            <div class="col-md-6">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email">
+            </div>
       </div>
 
-      <div class="form-group">
-        <label for="phone number">Phone Number:</label>
-        <input type="phone number" class="form-control" placeholder="Enter Phone Number" name="phone_number" id="phone_number">
+      <div class="row mb-3">
+            <label for="phone number" class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
+
+            <div class="col-md-6">
+                <input id="address" type="address" class="form-control @error('phone number') is-invalid @enderror" name="phone number" required autocomplete="phone number">
+            </div>
       </div>
 
-      <div class="form-group">
-        <label for="address">Address:</label>
-        <input type="address" class="form-control" placeholder="Enter Address" name="address" id="address">
+      
+      <div class="row mb-3">
+            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
+
+            <div class="col-md-6">
+                <input id="address" type="address" class="form-control @error('password') is-invalid @enderror" name="address" required autocomplete="address">
+            </div>
       </div>
 
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" class="form-control" placeholder="Enter password" name="password" id="password">
-      </div>
+      <div class="row mb-3">
+            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+            <div class="col-md-6">
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        
 
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
