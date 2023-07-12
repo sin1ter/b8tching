@@ -15,7 +15,6 @@ Route::get('/', function () {
 
 Route::get('/admin',[AdminController::class, 'index']);
 Route::post('/admin',[AdminController::class, 'store']);
-Route::view('/login', 'admin.login');
 Route::get('/admin_show', [AdminController::class, 'admin_info']);
 Route::get('/admin_show/delete/{id}',[AdminController::class, 'admindelete']);
 Route::get('/customer_info',[AdminController::class, 'show']);

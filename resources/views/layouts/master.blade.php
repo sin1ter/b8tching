@@ -31,9 +31,20 @@
       <li class="nav-item">
         <a class="nav-link" href="/customer_info">Customer</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin_profile">Edit Profile</a>
+      </li>
     </ul>
   </div>
-  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log Out</button>
+  <button><a class="dropdown-item" href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+        {{ __('Log Out') }}
+    </a>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form></button>
 </nav>
     </header>
     <br> <br> <br>
