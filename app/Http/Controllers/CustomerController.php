@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -16,13 +16,13 @@ class CustomerController extends Controller
     {
         echo "<pre>";
         print_r($res->all());
-        $customer = new Customer;
+        $customer = new User;
         $customer->name = $res['name'];
-        $customer->gmail = $res['gmail'];
-        // $customer->gender = $res['gender'];
+        $customer->email = $res['email'];
         $customer->phone_number = $res['phone_number'];
         $customer->address = $res['address'];
         $customer->password = Hash::make($res->password);        
         $customer->save();
+
     }
 }
