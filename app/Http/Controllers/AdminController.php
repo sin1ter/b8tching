@@ -79,7 +79,7 @@ class AdminController extends Controller
 
     public function admin_profile_edit($id)
     {
-        $admin= admin::find($id);
+        $admin= Admin::find($id);
         $title = "Update Profile";        
         $data = compact('admin','title');
         return view ('admin.update_profile')->with($data);

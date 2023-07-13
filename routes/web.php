@@ -12,7 +12,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// Admin Route
 Route::get('/admin',[AdminController::class, 'index']);
 Route::post('/admin',[AdminController::class, 'store']);
 Route::get('/admin_show', [AdminController::class, 'admin_info']);
@@ -28,8 +28,13 @@ Route::get('/admin_profile/{id}', [AdminController::class, 'admin_profile_show']
 Route::get('/edit/{id}',[AdminController::class, 'admin_profile_edit']) -> name('admin_profile.edit');
 Route::post('/admin_profile/update/{id}',[AdminController::class, 'admin_profile_update']);
 
+//Customer Route
 Route::get('/customer',[CustomerController::class, 'index']);
 Route::post('/customer',[CustomerController::class, 'store']);
+Route::get('/customer_profile/{id}', [CustomerController::class, 'customer_profile_show']);
+Route::get('/cusedit/{id}',[CustomerController::class, 'customer_profile_edit']) -> name('customer_profile.edit');
+Route::post('/customer_profile/update/{id}',[CustomerController::class, 'customer_profile_update']);
+
 
 
 Auth::routes();

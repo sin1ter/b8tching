@@ -7,14 +7,15 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Customer Registration</title>
+    <title>{{$title}}</title>
   </head>
   <body>
   <header>
-  
+
     </header>
     <br> <br> <br>
-  <h1 class = "text-center">Customer Registration</h1>
+  <h1 class = "text-center">{{$title}}</h1>
+
   <br>
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-1000">

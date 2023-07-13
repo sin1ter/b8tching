@@ -8,10 +8,16 @@ use Symfony\Contracts\Service\Attribute\Required;
 
 class CustomerController extends Controller
 {
+    // customer registration show
     public function index() 
     {
-        return view('customer/registration');
+        $url = url('/customer');
+        $title = "Customer Registration form";
+        $customer = User::all();
+        $data = compact('customer','url','title');
+        return view('customer/registration')->with($data);
     }
+    //customer registration information store
     public function store(Request $res)
     {
         echo "<pre>";
@@ -24,5 +30,43 @@ class CustomerController extends Controller
         $customer->password = Hash::make($res->password);        
         $customer->save();
 
+    }
+
+    //customer profile show
+    public function customer_profile_show($id) 
+    {
+        $customer= User::find($id);
+        if(is_null($customer)){
+            
+            return redirect('customer_profile');
+        }
+        else{
+            $title = "Customer Profile";
+            $url = url('/customer_profile/update') ."/". $id;
+            $data = compact('customer', 'url','title');
+            return view('customer.customer_profile')->with($data);
+        }
+    }
+
+    //customer profile edit
+     public function customer_profile_edit($id)
+    {
+        $customer= User::find($id);
+        $title = "Update Customer Profile";     
+        $data = compact('customer','title');
+        return view ('customer.registration')->with($data);
+        
+    }
+
+    public function customer_profile_update($id, Request $req)
+    {
+        $customer = User::find($id);
+        $customer = new User;
+        $customer->name = $req['name'];
+        $customer->email = $req['email'];
+        $customer->phone_number = $req['phone_number'];
+        $customer->address = $req['address'];
+        $customer->password = Hash::make($req->password);        
+        $customer->update();
     }
 }
