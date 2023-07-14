@@ -16,7 +16,7 @@
         <tbody>
             @foreach ($admin as $a)
             <tr>
-                <td><img src="images/{{$a->image}}" width="100px" height="100px"></td>
+                <td><img src="{{asset('uploads/admin_image/'.$a->image)}}" width="100px" height="100px" alt="" class="img img-responsive"></td>
                 <td>{{$a->name}}</td>
                 <td>{{$a->gmail}}</td>
                 <td>{{$a->address}}</td>

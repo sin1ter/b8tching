@@ -30,7 +30,7 @@
                 <td>{{$p->product_description}}</td>
                 <td>{{$p->quantity}}</td>
                 <td>{{$p->category}}</td>
-                <td><img src="product_images/{{$p->image}}" width="100px" height="100px"></td>
+                <td><img src="{{asset('uploads/product_image/'.$p->image)}}" width="100px" height="100px" alt="" class="img img-responsive"></td>
                 <td>{{$p->size}}</td>
                 <td>
                     <a href="{{url('/show_product/edit/')}}/{{$p->product_id}}" class="btn btn-outline-primary">Edit</a>

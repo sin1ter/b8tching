@@ -5,6 +5,7 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -30,25 +31,20 @@ class AdminController extends Controller
         //         'image' => 'required',
         //     ]
         //     );
-        $name = $req->get('name');
-        $gmail = $req->get('gmail');
-        $address = $req->get('address');
-        $password = $req->get('password');
-        $date_of_birth = $req->get('date_of_birth');
-        $image = $req->file('image')->getClientOriginalName();
-        //move uploaded file 
 
-        $req->image->move(public_path('images'), $image);
-        
-        echo "<pre>";
-        print_r($req->all());
         $admin = new Admin;
         $admin->name = $req -> name;
         $admin->gmail = $req -> gmail;
         $admin->address = $req -> address;
         $admin->password = Hash::make($req->password);
         $admin->date_of_birth = $req -> date_of_birth;
-        $admin->image = $req -> image;
+        if($req->hasfile('image')) {
+            $file=$req->file("image");
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/admin_image/', $filename);
+            $admin->image=$filename;
+        }
         $admin->save();
         return redirect('admin_show');
     }
@@ -143,21 +139,19 @@ class AdminController extends Controller
     //product add into database
     public function add_product(Request $req) 
     {
-        $product_name = $req->get('product_name');
-        $product_price = $req->get('product_price');
-        $product_description = $req->get('product_description');
-        $image = $req->file('image')->getClientOriginalName();
-        $category = $req->get('category');
-        $size = $req->get('size');
-        //move uploaded file 
-
-        $req->image->move(public_path('product_images'), $image);
+        //move uploaded file     
 
         $product = new Product;
         $product->product_name = $req -> product_name;
         $product->product_price = $req -> product_price;
         $product->product_description = $req -> product_description;
-        $product->image = $req -> image;
+        if($req->hasfile('image')) {
+            $file=$req->file("image");
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/product_image/', $filename);
+            $product->image=$filename;
+        }
         $product->quantity = $req -> quantity;
         $product->category = $req -> category;
         $product->size = $req -> size;
@@ -194,14 +188,18 @@ class AdminController extends Controller
     // product updated
     public function update($id, Request $req)
     {   
-        $image = $req->file('image')->getClientOriginalName();
-        $req->image->move(public_path('product_images'), $image);
-        
+
         $product = Product::find($id);
         $product->product_name = $req -> product_name;
         $product->product_price = $req -> product_price;
         $product->product_description = $req -> product_description;
-        $product->image = $req -> image;
+        if($req->hasfile('image')) {
+            $file=$req->file("image");
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/product_image/', $filename);
+            $product->image=$filename;
+        }
         $product->quantity = $req -> quantity;
         $product->category = $req -> category;
         $product->size = $req -> size;

@@ -26,6 +26,9 @@
         <a class="nav-link" href="/admin">Add Admin</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/admin_show">Show Admin</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/show_product">Show Product</a>
       </li>
       <li class="nav-item">
