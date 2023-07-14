@@ -17,7 +17,7 @@ class AdminController extends Controller
         $data = compact('url','title');
         return view('admin/registration')->with($data);
     }
-    //Customer information store
+    //Admin information store
     public function store(Request $res)
     {
         // $res->validate(
@@ -30,6 +30,16 @@ class AdminController extends Controller
         //         'image' => 'required',
         //     ]
         //     );
+        $name = $res->get('name');
+        $gmail = $res->get('gmail');
+        $address = $res->get('address');
+        $password = $res->get('password');
+        $date_of_birth = $res->get('date_of_birth');
+        $image = $res->file('image')->getClientOriginalName();
+        //move uploaded file 
+
+        $res->image->move(public_path('images'), $image);
+        
         echo "<pre>";
         print_r($res->all());
         $admin = new Admin;

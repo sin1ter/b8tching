@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <form action="{{url('admin')}}" method="POST">
+    <form action="{{url('admin')}}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="form-group">
         <label for="name">Name:</label>

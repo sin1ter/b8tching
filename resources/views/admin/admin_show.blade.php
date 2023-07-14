@@ -5,6 +5,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Address</th>
@@ -15,6 +16,7 @@
         <tbody>
             @foreach ($admin as $a)
             <tr>
+                <td><img src="images/{{$a->image}}" width="100px" height="100px"></td>
                 <td>{{$a->name}}</td>
                 <td>{{$a->gmail}}</td>
                 <td>{{$a->address}}</td>
