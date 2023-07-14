@@ -18,37 +18,37 @@ class AdminController extends Controller
         return view('admin/registration')->with($data);
     }
     //Admin information store
-    public function store(Request $res)
+    public function store(Request $req)
     {
-        // $res->validate(
+        // $req->validate(
         //     [
         //         'name'=>'required',
         //         'gmail'=>'required',
-        //         'address'=>'required',
+        //         'addreqs'=>'required',
         //         'password'=>'required | Confirmed',
         //         'date_of_birth'=>'required',
         //         'image' => 'required',
         //     ]
         //     );
-        $name = $res->get('name');
-        $gmail = $res->get('gmail');
-        $address = $res->get('address');
-        $password = $res->get('password');
-        $date_of_birth = $res->get('date_of_birth');
-        $image = $res->file('image')->getClientOriginalName();
+        $name = $req->get('name');
+        $gmail = $req->get('gmail');
+        $address = $req->get('address');
+        $password = $req->get('password');
+        $date_of_birth = $req->get('date_of_birth');
+        $image = $req->file('image')->getClientOriginalName();
         //move uploaded file 
 
-        $res->image->move(public_path('images'), $image);
+        $req->image->move(public_path('images'), $image);
         
         echo "<pre>";
-        print_r($res->all());
+        print_r($req->all());
         $admin = new Admin;
-        $admin->name = $res -> name;
-        $admin->gmail = $res -> gmail;
-        $admin->address = $res -> address;
-        $admin->password = Hash::make($res->password);
-        $admin->date_of_birth = $res -> date_of_birth;
-        $admin->image = $res -> image;
+        $admin->name = $req -> name;
+        $admin->gmail = $req -> gmail;
+        $admin->address = $req -> address;
+        $admin->password = Hash::make($req->password);
+        $admin->date_of_birth = $req -> date_of_birth;
+        $admin->image = $req -> image;
         $admin->save();
         return redirect('admin_show');
     }
@@ -95,13 +95,13 @@ class AdminController extends Controller
         return view ('admin.update_profile')->with($data);
         
     }
-    // product updated
+    // admin profile updated
     public function admin_profile_update($id, Request $req)
     {
         $admin = Admin::find($id);
         $admin->name = $req -> name;
         $admin->gmail = $req -> gmail;
-        $admin->address = $req -> address;
+        $admin->addreqs = $req -> addreqs;
         $admin->password = Hash::make ($req -> password);
         $admin->date_of_birth = $req -> date_of_birth;
         $admin->image = $req -> image;
@@ -143,6 +143,16 @@ class AdminController extends Controller
     //product add into database
     public function add_product(Request $req) 
     {
+        $product_name = $req->get('product_name');
+        $product_price = $req->get('product_price');
+        $product_description = $req->get('product_description');
+        $image = $req->file('image')->getClientOriginalName();
+        $category = $req->get('category');
+        $size = $req->get('size');
+        //move uploaded file 
+
+        $req->image->move(public_path('product_images'), $image);
+
         $product = new Product;
         $product->product_name = $req -> product_name;
         $product->product_price = $req -> product_price;
@@ -183,7 +193,10 @@ class AdminController extends Controller
     }
     // product updated
     public function update($id, Request $req)
-    {
+    {   
+        $image = $req->file('image')->getClientOriginalName();
+        $req->image->move(public_path('product_images'), $image);
+        
         $product = Product::find($id);
         $product->product_name = $req -> product_name;
         $product->product_price = $req -> product_price;

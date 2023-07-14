@@ -17,6 +17,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Category</th>
+                <th scope="col">Image</th>
                 <th scope="col">Size</th>
                 <th scope="col">Action</th>
             </tr>
@@ -29,6 +30,7 @@
                 <td>{{$p->product_description}}</td>
                 <td>{{$p->quantity}}</td>
                 <td>{{$p->category}}</td>
+                <td><img src="product_images/{{$p->image}}" width="100px" height="100px"></td>
                 <td>{{$p->size}}</td>
                 <td>
                     <a href="{{url('/show_product/edit/')}}/{{$p->product_id}}" class="btn btn-outline-primary">Edit</a>
