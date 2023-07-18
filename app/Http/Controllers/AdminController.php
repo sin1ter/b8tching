@@ -25,7 +25,7 @@ class AdminController extends Controller
         //     [
         //         'name'=>'required',
         //         'gmail'=>'required',
-        //         'addreqs'=>'required',
+        //         'address'=>'required',
         //         'password'=>'required | Confirmed',
         //         'date_of_birth'=>'required',
         //         'image' => 'required',
@@ -97,7 +97,7 @@ class AdminController extends Controller
         $admin = Admin::find($id);
         $admin->name = $req -> name;
         $admin->gmail = $req -> gmail;
-        $admin->addreqs = $req -> addreqs;
+        $admin->address = $req -> address;
         $admin->password = Hash::make ($req -> password);
         $admin->date_of_birth = $req -> date_of_birth;
         $admin->image = $req -> image;
