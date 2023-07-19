@@ -36,6 +36,7 @@ Route::get('/cusedit/{id}',[CustomerController::class, 'customer_profile_edit'])
 Route::post('/customer_profile/update/{id}',[CustomerController::class, 'customer_profile_update']);
 Route::view('/customer_home', 'customer.customer_home');
 
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
