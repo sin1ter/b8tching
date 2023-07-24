@@ -13,7 +13,7 @@
         <a href="#"> <img src = "img/logo.png" class = "logo"alt=""</a>
         <div>
             <ul id = "navbar">
-                <li><a class = "active"href= "index.html">Home</a></li>
+                <li><a class = "active" href= "index.html">Home</a></li>
                 <li><a href= "male.html">Male</a></li>
                 <li><a href= "female.html">Female</a></li>
                 <li><a href= "kids.html">Kids</a></li>
@@ -60,7 +60,7 @@
     <section id="product1" class="section-p1">
         <div class="pro-container">
             <div class="pro">
-                <img src="img/products/f1.jpg" alt="">
+                <img src="{{asset('uploads/product_image/'.$product->image)"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -76,7 +76,7 @@
                 <a href="#"><i class="fal fa-shopping-cart cart"></i> </a>
             </div>
             <div class="pro">
-                <img src="img/products/f1.jpg" alt="">
+                <img src="{{asset('uploads/product_image/'.$product->image)} width="50px" height="50px"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -92,7 +92,7 @@
                 <a href="#"><i class="fal fa-shopping-cart cart"></i> </a>
             </div>
             <div class="pro">
-                <img src="img/products/f1.jpg" alt="">
+            <img src="{{asset('uploads/product_image/'.$product->image)} width="50px" height="50px"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -108,7 +108,7 @@
                 <a href="#"><i class="fal fa-shopping-cart cart"></i> </a>
             </div>
             <div class="pro">
-                <img src="img/products/f1.jpg" alt="">
+            <img src="{{asset('uploads/product_image/'.$product->image)} width="50px" height="50px"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -124,7 +124,7 @@
                 <a href="#"><i class="fal fa-shopping-cart cart"></i> </a>
             </div>
             <div class="pro">
-                <img src="img/products/f1.jpg" alt="">
+            <img src="{{asset('uploads/product_image/'.$product->image)} width="50px" height="50px"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -140,7 +140,7 @@
                 <a href="#"><i class="fal fa-shopping-cart cart"></i> </a>
             </div>
             <div class="pro">
-                <img src="img/products/f1.jpg" alt="">
+            <img src="{{asset('uploads/product_image/'.$product->image)} width="50px" height="50px"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -156,7 +156,7 @@
                 <a href="#"><i class="fal fa-shopping-cart cart"></i> </a>
             </div>
             <div class="pro">
-                <img src="img/products/f1.jpg" alt="">
+            <img src="{{asset('uploads/product_image/'.$product->image)} width="50px" height="50px"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>

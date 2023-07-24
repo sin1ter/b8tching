@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -68,5 +69,12 @@ class CustomerController extends Controller
         $customer->address = $req['address'];
         $customer->password = Hash::make($req->password);        
         $customer->update();
+    }
+
+    public function product() 
+    {
+        $product = Product::all();
+        $data = compact('product');
+        return view('customer.home')->with($data);
     }
 }
