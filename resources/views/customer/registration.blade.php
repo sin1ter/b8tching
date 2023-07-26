@@ -24,7 +24,7 @@
             <label for="phone number" class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
 
             <div class="col-md-6">
-                <input id="address" type="address" class="form-control @error('phone number') is-invalid @enderror" name="phone number" required autocomplete="phone number" value="0{{$customer->phone_number}}">
+                <input id="address" type="address" class="form-control @error('phone number') is-invalid @enderror" name="phone number" required autocomplete="phone number" value="{{$customer->phone_number}}">
             </div>
       </div>
 

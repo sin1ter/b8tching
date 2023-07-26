@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Customer Page</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" />
     <link rel="stylesheet" href = "style.css">
     <link rel="stylesheet" href = "{{asset('css/style.css')}}">
@@ -56,11 +56,11 @@
             <h6> F24/7 Support </h6>
         </div>
     </section>
-        
+
     <section id="product1" class="section-p1">
         <div class="pro-container">
             <div class="pro">
-                <img src="{{asset('uploads/product_image/'.$product->image)"> 
+                <img src="{{URL::asset('uploads/product_image/1690212562')}}" width="50px" height="50px"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -71,12 +71,12 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>$78</h4>
+                    <h4>$product->product_price</h4>
                 </div>
                 <a href="#"><i class="fal fa-shopping-cart cart"></i> </a>
             </div>
             <div class="pro">
-                <img src="{{asset('uploads/product_image/'.$product->image)} width="50px" height="50px"> 
+                <img src="{{asset('uploads/product_image/.$product->image)'}" width="50px" height="50px"> 
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>

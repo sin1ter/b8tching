@@ -71,7 +71,7 @@ class CustomerController extends Controller
         $customer->update();
     }
 
-    public function product() 
+    public function product(Request $req) 
     {
         $product = Product::all();
         $data = compact('product');
