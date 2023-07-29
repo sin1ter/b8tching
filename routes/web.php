@@ -38,6 +38,8 @@ Route::view('/customer_home', 'customer.customer_home');
 Route::view('/shop','customer.home');
 Route::view('/customer_shop','customer.shop');
 Route::get('/shop',[CustomerController::class, 'product']);
+Route::view('/single_product','customer.single_product');
+Route::get('/single_product/{id}',[CustomerController::class,'s_product']);
 
 
 Auth::routes();

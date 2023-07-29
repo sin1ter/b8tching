@@ -71,10 +71,23 @@ class CustomerController extends Controller
         $customer->update();
     }
 
-    public function product(Request $req) 
+    public function product() 
     {
         $product = Product::all();
-        $data = compact('product');
-        return view('customer.home')->with($data);
+        return view('customer.home')->with('product', $product);
+    }
+
+    public function s_product($id)
+    {
+        $product= Product::find($id);
+        if(is_null($product)){
+            
+            return redirect('customer.home');
+        }
+        else{
+            $url = url('/single_product') ."/". $id;
+            $data = compact('product', 'url');
+            return view('customer.single_product')->with($data);
+        }
     }
 }
