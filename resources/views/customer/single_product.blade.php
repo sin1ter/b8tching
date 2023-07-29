@@ -66,7 +66,9 @@
         <div class="pro-container">
             @foreach ($pro as $product)
                 <div class="pro">
-                    <img src="{{asset('uploads/product_image/'.$product->image)}}" width="100%">
+                    <a href="{{url('/single_product/')}}/{{$product->product_id}}">
+                        <img src="{{asset('uploads/product_image/'.$product->image)}}" width="100%"> 
+                    </a>
                     <div class="des">
                         <span></span>
                         <h5>{{$product->product_name}}</h5>
