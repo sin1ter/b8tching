@@ -73,20 +73,23 @@ class CustomerController extends Controller
 
     public function product() 
     {
-        $product = Product::all();
-        return view('customer.home')->with('product', $product);
+        $product = Product::paginate(12);
+        $products = Product::inRandomOrder()->paginate(4);
+        $data = compact('product', 'products');
+        return view('customer.home')->with($data);
     }
 
     public function s_product($id)
     {
         $product= Product::find($id);
+        $pro = Product::paginate(4);
         if(is_null($product)){
             
             return redirect('customer.home');
         }
         else{
             $url = url('/single_product') ."/". $id;
-            $data = compact('product', 'url');
+            $data = compact('product', 'pro', 'url');
             return view('customer.single_product')->with($data);
         }
     }
