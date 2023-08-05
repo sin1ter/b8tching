@@ -35,7 +35,9 @@
           <a class="nav-link" href="/customer_info">Customer</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin_profile">Edit Profile</a>
+          
+          <a class="nav-link" href="/admin_profile/{{$admin}}">Edit Profile</a> 
+         
         </li>
       </ul>
     </div>
