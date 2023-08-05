@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Symfony\Contracts\Service\Attribute\Required;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -18,6 +19,40 @@ class AdminController extends Controller
         $data = compact('url','title');
         return view('admin/registration')->with($data);
     }
+
+    public function adminlogin(){
+        $url = url('login/admin');
+        $data = compact('url');
+        return view('admin.admin_login')->with($data);
+    }
+
+    public function adminlogincheck(Request $request){
+        $url = url('login/admin');
+        $request->validate([
+            'gmail'=>'required',
+            'password'=>'required',
+        ]);
+
+        if(Auth::guard('admin')->attempt(['gmail' => $request->gmail,'password'=>$request->password])){
+            return redirect('/admin/dashboard');
+        }
+        else{
+            Session::flash('error-msg', 'Invalid Email or Password');
+            return redirect()->back();
+        }
+    }
+
+    public function adminDashboard() {
+        $title = "Admin Dashboard";
+        $data = compact('title');
+        return view('admin.admin_dashboard')->with($data);
+    }
+
+    public function adminlogout(){
+        Auth::guard('admin')->logout();
+        return redirect('login/admin');
+    }
+
     //Admin information store
     public function store(Request $req)
     {

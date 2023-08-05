@@ -17,6 +17,15 @@
                 <li><a href= "female.html">Female</a></li>
                 <li><a href= "kids.html">Kids</a></li>
                 <li><a href= "cart.html">Carts</a></li>
+                <button><a class="dropdown-item" href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+        {{ __('Log Out') }}
+    </a>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form></button>
             </ul>
         </div>
     </section>

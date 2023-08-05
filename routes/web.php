@@ -13,20 +13,27 @@ Route::get('/', function () {
 });
 
 // Admin Route
+
+Route::get('login/admin',[AdminController::class, 'adminlogin']);
+Route::post('login/admin',[AdminController::class, 'adminlogincheck']);
 Route::get('/admin',[AdminController::class, 'index']);
 Route::post('/admin',[AdminController::class, 'store']);
-Route::get('/admin_show', [AdminController::class, 'admin_info']);
-Route::get('/admin_show/delete/{id}',[AdminController::class, 'admindelete']);
-Route::get('/customer_info',[AdminController::class, 'show']);
-Route::get('/add_product',[AdminController::class, 'product']);
-Route::post('/add_product',[AdminController::class, 'add_product']);
-Route::get('/show_product',[AdminController::class, 'show_product']);
-Route::get('/show_product/delete/{id}',[AdminController::class, 'delete']);
-Route::get('/show_product/edit/{id}',[AdminController::class, 'edit']) -> name('show_product.edit');
-Route::post('/show_product/update/{id}',[AdminController::class, 'update']);
-Route::get('/admin_profile/{id}', [AdminController::class, 'admin_profile_show']);
-Route::get('/edit/{id}',[AdminController::class, 'admin_profile_edit']) -> name('admin_profile.edit');
-Route::post('/admin_profile/update/{id}',[AdminController::class, 'admin_profile_update']);
+Route::group(['middleware'=> 'admin'],function(){
+    Route::get('/admin_show', [AdminController::class, 'admin_info']);
+    Route::get('/admin_show/delete/{id}',[AdminController::class, 'admindelete']);
+    Route::get('/customer_info',[AdminController::class, 'show']);
+    Route::get('/add_product',[AdminController::class, 'product']);
+    Route::post('/add_product',[AdminController::class, 'add_product']);
+    Route::get('/show_product',[AdminController::class, 'show_product']);
+    Route::get('/show_product/delete/{id}',[AdminController::class, 'delete']);
+    Route::get('/show_product/edit/{id}',[AdminController::class, 'edit']) -> name('show_product.edit');
+    Route::post('/show_product/update/{id}',[AdminController::class, 'update']);
+    Route::get('/admin_profile/{id}', [AdminController::class, 'admin_profile_show']);
+    Route::get('/edit/{id}',[AdminController::class, 'admin_profile_edit']) -> name('admin_profile.edit');
+    Route::post('/admin_profile/update/{id}',[AdminController::class, 'admin_profile_update']);
+    Route::get('admin/dashboard', [AdminController::class,'adminDashboard']);
+    Route::get('admin/logout', [AdminController:: class, 'adminlogout'])->name('admin.logout');
+}); 
 
 //Customer Route
 Route::get('/customer',[CustomerController::class, 'index']);

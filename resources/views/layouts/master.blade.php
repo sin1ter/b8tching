@@ -17,37 +17,31 @@
   </button>
   <a class="navbar-brand" href="#">E-Commerce</a>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/add_product">Add Product</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin">Add Admin</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin_show">Show Admin</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/show_product">Show Product</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/customer_info">Customer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin_profile">Edit Profile</a>
-      </li>
-    </ul>
-  </div>
-  <button><a class="dropdown-item" href="{{ route('logout') }}"
-        onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-        {{ __('Log Out') }}
-    </a>
-
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-        @csrf
-    </form></button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="/add_product">Add Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">Add Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_show">Show Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/show_product">Show Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/customer_info">Customer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_profile">Edit Profile</a>
+        </li>
+      </ul>
+    </div>
+    
+    <a class="btn btn-danger mt-3" href="{{url('admin/logout')}}"> Logout </a>
+  
 </nav>
     </header>
     <br> <br> <br>
