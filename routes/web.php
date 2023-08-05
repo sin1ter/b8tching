@@ -16,9 +16,9 @@ Route::get('/', function () {
 
 Route::get('login/admin',[AdminController::class, 'adminlogin']);
 Route::post('login/admin',[AdminController::class, 'adminlogincheck']);
-Route::get('/admin',[AdminController::class, 'index']);
-Route::post('/admin',[AdminController::class, 'store']);
 Route::group(['middleware'=> 'admin'],function(){
+    Route::get('/admin',[AdminController::class, 'index']);
+    Route::post('/admin',[AdminController::class, 'store']);
     Route::get('/admin_show', [AdminController::class, 'admin_info']);
     Route::get('/admin_show/delete/{id}',[AdminController::class, 'admindelete']);
     Route::get('/customer_info',[AdminController::class, 'show']);
@@ -41,7 +41,6 @@ Route::post('/customer',[CustomerController::class, 'store']);
 Route::get('/customer_profile/{id}', [CustomerController::class, 'customer_profile_show']);
 Route::get('/cusedit/{id}',[CustomerController::class, 'customer_profile_edit']) -> name('customer_profile.edit');
 Route::post('/customer_profile/update/{id}',[CustomerController::class, 'customer_profile_update']);
-Route::view('/customer_home', 'customer.customer_home');
 Route::view('/shop','customer.home');
 Route::view('/customer_shop','customer.shop');
 Route::get('/shop',[CustomerController::class, 'product']);

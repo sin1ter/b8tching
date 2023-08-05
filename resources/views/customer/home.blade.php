@@ -17,15 +17,24 @@
                 <li><a href= "female.html">Female</a></li>
                 <li><a href= "kids.html">Kids</a></li>
                 <li><a href= "cart.html">Carts</a></li>
-                <button><a class="dropdown-item" href="{{ route('logout') }}"
-        onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-        {{ __('Log Out') }}
-    </a>
-
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-        @csrf
-    </form></button>
+                @if (Route::has('login'))
+                
+                    @auth
+                    <li><a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a></li>
+                    <button><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">{{ __('Log Out') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                        </form>
+                    </button>
+                    @else
+                        <li><a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a></li>
+                        @if (Route::has('register'))
+                            <li><a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a></li>
+                        @endif
+                    @endauth
+                
+                @endif
             </ul>
         </div>
     </section>
