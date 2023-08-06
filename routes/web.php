@@ -16,9 +16,11 @@ Route::get('/', function () {
 
 Route::get('login/admin',[AdminController::class, 'adminlogin']);
 Route::post('login/admin',[AdminController::class, 'adminlogincheck']);
+Route::get('/admin',[AdminController::class, 'index']);
+Route::post('/admin',[AdminController::class, 'store']);
+
 Route::group(['middleware'=> 'admin'],function(){
-    Route::get('/admin',[AdminController::class, 'index']);
-    Route::post('/admin',[AdminController::class, 'store']);
+    
     Route::get('/admin_show', [AdminController::class, 'admin_info']);
     Route::get('/admin_show/delete/{id}',[AdminController::class, 'admindelete']);
     Route::get('/customer_info',[AdminController::class, 'show']);
@@ -47,6 +49,25 @@ Route::get('/customer_profile/{id}', [CustomerController::class, 'customer_profi
 Route::get('/cusedit/{id}',[CustomerController::class, 'customer_profile_edit']) -> name('customer_profile.edit');
 Route::post('/customer_profile/update/{id}',[CustomerController::class, 'customer_profile_update']);
 
+
+
+Route::get('login/customer',[CustomerController::class, 'customerlogin']);
+Route::post('login/customer',[CustomerController::class, 'customerlogincheck']);
+Route::post('/add_to_cart', [CustomerController::class, 'add_to_cart']);
+
+
+
+
+Route::group(['middleware'=> 'customers'],function(){
+    Route::view('/single_product','customer.single_product');
+    Route::get('/single_product/{id}',[CustomerController::class,'s_product']);
+    Route::get('/customer_profile/{id}', [CustomerController::class, 'customer_profile_show']);
+    Route::get('/cusedit/{id}',[CustomerController::class, 'customer_profile_edit']) -> name('customer_profile.edit');
+    Route::post('/customer_profile/update/{id}',[CustomerController::class, 'customer_profile_update']);
+    Route::get('/shop_login',[CustomerController::class, 'login_product']);
+    Route::get('customer/logout', [CustomerController:: class, 'customerlogout'])->name('customer.logout');
+    Route::post('/add_to_cart', [CustomerController::class, 'add_to_cart']);
+});
 
 Auth::routes();
 

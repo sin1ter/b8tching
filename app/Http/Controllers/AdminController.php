@@ -14,6 +14,7 @@ use Auth;
 class AdminController extends Controller
 {
     public function index(){
+        
         $url = url('/admin');
         $title = "Admin Registration form";
         $data = compact('url','title');

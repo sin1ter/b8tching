@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
 use App\Models\Product;
+use App\Models\Customer;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Contracts\Service\Attribute\Required;
+use Auth;
+use Session;
+
 
 class CustomerController extends Controller
 {
@@ -14,16 +18,17 @@ class CustomerController extends Controller
     {
         $url = url('/customer');
         $title = "Customer Registration form";
-        $customer = User::all();
+        $customer = Customer::all();
         $data = compact('customer','url','title');
         return view('customer/registration')->with($data);
     }
     //customer registration information store
     public function store(Request $res)
     {
+        
         echo "<pre>";
         print_r($res->all());
-        $customer = new User;
+        $customer = new Customer;
         $customer->name = $res['name'];
         $customer->email = $res['email'];
         $customer->phone_number = $res['phone_number'];
@@ -33,10 +38,47 @@ class CustomerController extends Controller
 
     }
 
+    //customer login
+
+    public function customerlogin(){
+        $url = url('login/customer');
+        $data = compact('url');
+        return view('customer.customer_login')->with($data);
+    }
+
+    public function customerlogincheck(Request $request){
+        $url = url('login/customer');
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+
+        if(Auth::guard('customers')->attempt(['email' => $request->email,'password'=>$request->password])){
+            return redirect('/shop_login');
+        }
+        else{
+            Session::flash('error-msg', 'Invalid Email or Password');
+            return redirect()->back();
+        }
+    }
+
+    //customer logout
+    public function customerlogout(){
+        Auth::guard('customers')->logout();
+        return redirect('/shop');
+    }
+
+    public function add_to_cart(Request $request){
+        $cart = new Cart;
+        $cart->cus_id= $request->session()->get('customers')['cus_id'];
+        $cart->product_id=$request->input('product_id');
+        $cart->save();
+        return redirect('/shop');
+    }
     //customer profile show
     public function customer_profile_show($id) 
     {
-        $customer= User::find($id);
+        $customer= Customer::find($id);
         if(is_null($customer)){
             
             return redirect('customer_profile');
@@ -48,11 +90,11 @@ class CustomerController extends Controller
             return view('customer.customer_profile')->with($data);
         }
     }
-
+    
     //customer profile edit
      public function customer_profile_edit($id)
     {
-        $customer= User::find($id);
+        $customer= Customer::find($id);
         $title = "Update Customer Profile";     
         $data = compact('customer','title');
         return view ('customer.registration')->with($data);
@@ -61,8 +103,8 @@ class CustomerController extends Controller
 
     public function customer_profile_update($id, Request $req)
     {
-        $customer = User::find($id);
-        $customer = new User;
+        $customer = Customer::find($id);
+        $customer = new Customer;
         $customer->name = $req['name'];
         $customer->email = $req['email'];
         $customer->phone_number = $req['phone_number'];
@@ -77,6 +119,15 @@ class CustomerController extends Controller
         $products = Product::inRandomOrder()->paginate(4);
         $data = compact('product', 'products');
         return view('customer.home')->with($data);
+    }
+
+    //after login home page
+    public function login_product() 
+    {
+        $product = Product::paginate(12);
+        $products = Product::inRandomOrder()->paginate(4);
+        $data = compact('product', 'products');
+        return view('customer.home_login')->with($data);
     }
 
     public function s_product($id)

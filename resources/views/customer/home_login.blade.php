@@ -17,8 +17,9 @@
                 <li><a href= "female.html">Female</a></li>
                 <li><a href= "kids.html">Kids</a></li>
                 <li><a href= "cart.html">Carts</a></li>
-                <li><a href= "login/customer">Login</a></li>
-                <li><a href= "/customer">Register</a></li>
+                <h3 text="text-center">
+                    <a class="btn btn-danger mt-3" href="{{ url('customer/logout')}}">logout</a>
+                </h3>
             </ul>
         </div>
     </section>
