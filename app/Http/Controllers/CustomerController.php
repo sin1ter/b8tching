@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -91,6 +92,22 @@ class CustomerController extends Controller
             $url = url('/single_product') ."/". $id;
             $data = compact('product', 'pro', 'url');
             return view('customer.single_product')->with($data);
+        }
+    }
+
+    public function add_to_cart(Request $request) 
+    {
+        if($request->session()->has('user')) 
+        {
+            $cart = new Cart;
+            $cart->user_id= $request->session()->get('user')['id'];
+            $cart->product_id=$request->input('product_id');
+            $cart->save();
+            return redirect('/shop');
+        }
+        else 
+        {
+            return redirect('/login');
         }
     }
 }

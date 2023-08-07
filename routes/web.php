@@ -7,11 +7,6 @@ use App\Models\Product;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Admin Route
 
 Route::get('login/admin',[AdminController::class, 'adminlogin']);
@@ -40,12 +35,14 @@ Route::get('/customer',[CustomerController::class, 'index']);
 Route::post('/customer',[CustomerController::class, 'store']);
 Route::view('/shop','customer.home');
 Route::view('/customer_shop','customer.shop');
+Route::get('/', [CustomerController::class, 'product']);
 Route::get('/shop',[CustomerController::class, 'product']);
 Route::view('/single_product','customer.single_product');
 Route::get('/single_product/{id}',[CustomerController::class,'s_product']);
 Route::get('/customer_profile/{id}', [CustomerController::class, 'customer_profile_show']);
 Route::get('/cusedit/{id}',[CustomerController::class, 'customer_profile_edit']) -> name('customer_profile.edit');
 Route::post('/customer_profile/update/{id}',[CustomerController::class, 'customer_profile_update']);
+Route::post('/add_to_cart', [CustomerController::class, 'add_to_cart']);
 
 
 Auth::routes();

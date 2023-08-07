@@ -54,7 +54,11 @@
                 <option>Large</option>
             </select>
             <input type="number" Value="1">
-            <button class="normal">Add To Cart</button>
+            <form action="/add_to_cart" method="post">
+                @csrf
+                <input type = "hidden" name="product_id" value={{$product->product_id}}>
+                <button class="normal">Add To Cart</button>
+            </form>
             <h4>Product Details</h4>
             <span>The Classic Cotton T-Shirt is a wardrobe essential that combines comfort and style. This versatile piece of clothing is perfect for casual outings, lounging at home, or as a base layer for various outfits. Made from premium quality 100% cotton fabric, it ensures a soft and breathable feel, making it suitable for year-round wear.</span>
         </div>

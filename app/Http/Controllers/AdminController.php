@@ -43,8 +43,8 @@ class AdminController extends Controller
     }
 
     // not working 
-    public function adminDashboard(Request $req) {
-        $admin = Admin::all()->value('id');
+    public function adminDashboard(Request $request) {
+        $admin = Admin::all();
         $title = "Admin Dashboard";
         $data = compact('title', 'admin');
         return view('admin.admin_dashboard')->with($data);
