@@ -40,6 +40,11 @@
           {{$admin->id}}
           @endforeach
           
+<<<<<<< HEAD
+=======
+          <a class="nav-link" href="/admin_profile">Edit Profile</a> 
+         
+>>>>>>> 886dddca8c70b5beddb890256e64ba3bdc9ab26d
         </li>
       </ul>
     </div>
